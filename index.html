@@ -835,55 +835,6 @@ function switchTab(tab, btn) {
   document.getElementById('tab-tools').style.display = tab==='tools' ? 'grid' : 'none';
 }
 
-// SLIDESHOW
-<script>
-// PARTICLE CANVAS
-const canvas = document.getElementById('bg-canvas'), ctx = canvas.getContext('2d');
-let W, H, particles = [];
-function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-resize(); window.addEventListener('resize', resize);
-function mkP() { return { x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.2+.3, vx:(Math.random()-.5)*.18, vy:(Math.random()-.5)*.18, a:Math.random()*.5+.1 }; }
-for (let i=0;i<90;i++) particles.push(mkP());
-function draw() {
-  ctx.clearRect(0,0,W,H);
-  particles.forEach(p => {
-    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle=`rgba(99,179,255,${p.a})`; ctx.fill();
-    p.x+=p.vx; p.y+=p.vy;
-    if(p.x<0||p.x>W) p.vx*=-1;
-    if(p.y<0||p.y>H) p.vy*=-1;
-  });
-  requestAnimationFrame(draw);
-}
-draw();
-
-// CURSOR GLOW
-const glow = document.getElementById('cursor-glow');
-document.addEventListener('mousemove', e => { glow.style.left=e.clientX+'px'; glow.style.top=e.clientY+'px'; });
-
-// SCROLL REVEAL
-const revealObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
-}, { threshold:.1 });
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-// ACTIVE NAV
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-sections.forEach(s => {
-  new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting) { navLinks.forEach(a=>a.classList.remove('active')); const a=document.querySelector(`.nav-links a[href="#${e.target.id}"]`); if(a) a.classList.add('active'); } });
-  }, { threshold:.35 }).observe(s);
-});
-
-// PORTFOLIO TABS
-function switchTab(tab, btn) {
-  document.querySelectorAll('.port-tab').forEach(t=>t.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('tab-apps').style.display = tab==='apps' ? 'grid' : 'none';
-  document.getElementById('tab-tools').style.display = tab==='tools' ? 'grid' : 'none';
-}
-
 // SLIDESHOW - FIXED
 const ssState = {};
 
