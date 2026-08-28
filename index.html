@@ -232,6 +232,20 @@
   .cert-chip:hover { border-color:var(--border-hi); color:var(--accent); }
 
   .timeline { display:flex; flex-direction:column; }
+  .timeline-group-title {
+    font-family:'Manrope',sans-serif;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--accent);
+    padding:14px 0 20px 208px;
+    border-top:1px solid var(--border);
+    margin-top:4px;
+  }
+  .timeline-group-title:first-child { border-top:0; margin-top:0; }
+  .project-link { display:inline; color:var(--text); text-decoration:underline; text-underline-offset:3px; }
+  .project-link:hover { color:#fff; }
   .tl-item { display:grid; grid-template-columns:160px 24px 1fr; gap:0 24px; }
   .tl-period { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text-muted); padding-top:4px; }
   .tl-marker { display:flex; flex-direction:column; align-items:center; }
@@ -244,8 +258,8 @@
   .tl-org { font-size:13px; color:var(--accent); font-weight:500; margin-bottom:10px; }
   .tl-desc { font-size:13px; color:var(--text-dim); line-height:1.7; max-width:600px; }
   .tl-bullets { list-style:none; display:flex; flex-direction:column; gap:6px; margin-top:10px; }
-  .tl-bullets li { font-size:12.5px; color:var(--text-dim); display:flex; gap:10px; line-height:1.6; }
-  .tl-bullets li::before { content:'›'; color:var(--accent); flex-shrink:0; }
+  .tl-bullets li { font-size:12.5px; color:var(--text-dim); display:block; padding-left:18px; text-indent:-18px; line-height:1.6; }
+  .tl-bullets li::before { content:'›'; color:var(--accent); display:inline-block; width:18px; }
 
   .contact-card { background:var(--card); border:1px solid var(--border); border-radius:24px; padding:56px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; position:relative; overflow:hidden; }
   .contact-card::before { content:''; position:absolute; top:-100px; right:-100px; width:300px; height:300px; background:radial-gradient(circle,rgba(99,179,255,0.1),transparent 70%); animation:blob-move 10s ease-in-out infinite; }
@@ -281,6 +295,7 @@
     .competencies-grid { grid-template-columns:1fr; }
     .contact-card { padding:32px; }
     .tl-item { grid-template-columns:90px 20px 1fr; }
+    .timeline-group-title { padding-left:134px; }
     .wrap { padding:0 20px; }
     .floating-badge { left:10px; }
     .cursor-glow { display:none; }
@@ -636,6 +651,7 @@
       <p class="sec-sub">6+ years of progressive experience in FMCG manufacturing and operations.</p>
     </div>
     <div class="timeline">
+      <h3 class="timeline-group-title reveal reveal-delay-1">Independent Projects</h3>
       <div class="tl-item reveal reveal-delay-1">
         <div class="tl-period">2022 - Present</div>
         <div class="tl-marker"><div class="tl-dot"></div><div class="tl-line"></div></div>
@@ -643,13 +659,14 @@
           <div class="tl-role">Professional Development & Entrepreneurial Venture</div>
           <div class="tl-org">Self-directed</div>
           <ul class="tl-bullets">
-            <li>Built and maintained hands-on personal projects, including practical web applications and AI-assisted tools for quality, supply chain, and business operations</li>
+            <li>Built and maintained hands-on personal projects, including <a class="project-link" href="#portfolio" onclick="switchTab('apps', document.querySelector('.port-tab'))">practical web applications</a> and <a class="project-link" href="#portfolio" onclick="switchTab('tools', document.querySelectorAll('.port-tab')[1])">AI-assisted tools</a> for quality, supply chain, and business operations</li>
             <li>Operated small e-commerce food business (2024)</li>
             <li>Applied data analysis and risk management for stocks and other financial assets trading</li>
             <li>Upskilling in data analysis (Power BI, SQL), SAP modules, and AI-Automation</li>
           </ul>
         </div>
       </div>
+      <h3 class="timeline-group-title reveal reveal-delay-2">Industry Experience</h3>
       <div class="tl-item reveal reveal-delay-2">
         <div class="tl-period">Jul 2015 - Nov 2021</div>
         <div class="tl-marker"><div class="tl-dot"></div><div class="tl-line"></div></div>
@@ -1015,8 +1032,8 @@
 
 <footer>
   <div class="wrap footer-inner">
-    <div class="footer-text">© 2026 Czeno N. All rights reserved.</div>
-    <div class="footer-text">Built with HTML · CSS · JS</div>
+    <div class="footer-text">© 2026 Czeno. All rights reserved.</div>
+    <div class="footer-text">· Chemical Engineering · Quality · Operations · Digital Tools ·</div>
   </div>
 </footer>
 
