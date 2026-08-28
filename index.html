@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vincent — Chemical Engineer</title>
+<title>Vincent | Chemical Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -285,6 +285,144 @@
     .floating-badge { left:10px; }
     .cursor-glow { display:none; }
   }
+
+  /* ===== VISUAL REFRESH ===== */
+  :root {
+    --void: #0a0707;
+    --surface: #140f0f;
+    --card: #1c1414;
+    --border: rgba(220, 38, 38, 0.1);
+    --border-hi: rgba(220, 38, 38, 0.28);
+    --accent: #dc2626;
+    --accent-2: #ef4444;
+    --text: #f5ecec;
+    --text-dim: #b89a9a;
+    --text-muted: #6b5252;
+  }
+
+  body { background: var(--void); }
+
+  #bg-canvas { display: none; }
+  .bg-deco {
+    display: none;
+    background:
+      radial-gradient(ellipse 700px 500px at 86% 8%, rgba(220, 38, 38, 0.12), transparent 64%),
+      radial-gradient(ellipse 600px 500px at 4% 78%, rgba(239, 68, 68, 0.07), transparent 62%);
+  }
+  .cursor-glow { display: none; }
+
+  header.nav {
+    background: rgba(8, 9, 12, 0.82);
+    border-bottom-color: var(--border);
+  }
+  .nav-inner { padding-top: 16px; padding-bottom: 16px; }
+  .logo { letter-spacing: 0.04em; }
+  .logo .dot { color: var(--accent); }
+  .nav-links { gap: 30px; }
+  .nav-links a::after { background: var(--accent); }
+
+  .btn { border-radius: 7px; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #160606;
+    box-shadow: 0 8px 24px rgba(220, 38, 38, 0.14);
+  }
+  .btn-primary:hover { box-shadow: 0 14px 34px rgba(220, 38, 38, 0.26); }
+  .btn-ghost:hover { background: rgba(220, 38, 38, 0.08); }
+
+  .hero { padding-top: 108px; }
+  .eyebrow {
+    color: var(--accent);
+    background: rgba(220, 38, 38, 0.09);
+    border-color: rgba(220, 38, 38, 0.26);
+  }
+  .hero-name { font-size: clamp(44px, 6vw, 72px); letter-spacing: -0.045em; }
+  .hero-name .accent {
+    background: none;
+    -webkit-text-fill-color: var(--accent);
+    color: var(--accent);
+    opacity: 0;
+    transition: opacity .35s ease;
+  }
+  .hero-name:hover .accent { opacity: 1; }
+  .hero-desc { max-width: 560px; }
+  .social-icon:hover { background: rgba(220, 38, 38, 0.08); }
+  .stat-card, .comp-item, .app-card, .tool-card, .blog-card, .contact-card {
+    background: var(--card);
+  }
+  .stat-card:hover, .comp-item:hover, .app-card:hover, .tool-card:hover,
+  .blog-card:hover { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22); }
+
+  .visual-ring { display: none; }
+  .photo-frame {
+    width: 360px;
+    height: 450px;
+    border-radius: 14px;
+    border-color: rgba(220, 38, 38, 0.42);
+    box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.72);
+  }
+  .photo-frame img {
+    display: block;
+    opacity: 0;
+    transition: opacity .35s ease, transform .45s ease;
+    transform: scale(1.03);
+  }
+  .photo-frame:hover img {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .photo-frame .photo-placeholder {
+    display: flex;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    transition: opacity .25s ease;
+  }
+  .photo-frame:hover .photo-placeholder { opacity: 0; }
+  .floating-badge { border-radius: 8px; }
+  .floating-badge .dot2 { background: #4ade80; }
+  .floating-badge { animation: none; }
+
+  section::before { background: linear-gradient(to bottom, transparent, rgba(220, 38, 38, 0.3)); }
+  .sec-tag, .app-tag, .blog-cat, .blog-read, .tl-org { color: var(--accent); }
+  .port-tab.active {
+    border-color: var(--accent);
+    background: rgba(220, 38, 38, 0.09);
+  }
+  .app-tag {
+    border-color: rgba(220, 38, 38, 0.34);
+    background: rgba(220, 38, 38, 0.07);
+  }
+  .app-badge {
+    border-color: rgba(220, 38, 38, 0.42);
+    color: var(--accent);
+  }
+  .ss-prev:hover, .ss-next:hover, .tool-icon {
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--accent);
+  }
+  .tl-dot { background: var(--accent); box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.16); }
+  .tl-line { background: var(--border); }
+  .contact-card { border-radius: 14px; }
+  .contact-card::before {
+    background: radial-gradient(circle, rgba(220, 38, 38, 0.11), transparent 70%);
+  }
+  .contact-row .ic {
+    background: rgba(220, 38, 38, 0.08);
+    border-color: rgba(220, 38, 38, 0.34);
+    color: var(--accent);
+  }
+  .form input:focus, .form textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    background: #1a1212;
+  }
+  .resume-download:hover { border-color: var(--accent); }
+
+  @media (max-width: 900px) {
+    .hero { padding-top: 64px; }
+    .photo-frame { width: 280px; height: 350px; }
+  }
 </style>
 </head>
 <body>
@@ -343,7 +481,7 @@
         <img src="images/photo.jpg" alt="Vincent Nocelo"> 
         <div class="photo-placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
-          <span>Add your photo<br><code style="font-size:10px">images/photo.jpg</code></span>
+          <span>Hover to reveal<br><code style="font-size:10px">profile photo</code></span>
         </div>
       </div>
       <div class="floating-badge"><span class="dot2"></span><span>Open to opportunities</span></div>
@@ -362,7 +500,7 @@
         <p>Managing QA/QC, calibration, manufacturing processes, inventory, and procurement across ISO systems and fast-paced environments. Led line rehabilitation projects, process validations, process capability studies, achieved zero major non-conformances across audits, and managed calibration for 100+ instruments.</p>
         <p> Building <strong>AI-powered productivity tools</strong> and deepening knowledge in supply chain, production planning, and quality systems. <a href="https://thesteadystate.beehiiv.com" target="_blank" style="color:var(--accent)">The Steady State</a> newsletter author.</p>
         
-        <a href="#" class="resume-download" style="text-decoration:none;">
+        <a href="resume.pdf" class="resume-download" download style="text-decoration:none;">
           <span class="icon">📄</span>
           <div class="info">
             <span class="title">Download Full Resume (PDF)</span>
@@ -371,7 +509,7 @@
         </a>
 
         <div class="certs-grid">
-          <span class="cert-chip">Licensed ChE — PRC</span>
+          <span class="cert-chip">Licensed ChE (PRC)</span>
           <span class="cert-chip">Quality Management Systems</span>
           <span class="cert-chip">HACCP / GMP</span>
           <span class="cert-chip">SPC</span>
@@ -404,7 +542,7 @@
     </div>
     <div class="timeline">
       <div class="tl-item reveal reveal-delay-1">
-        <div class="tl-period">2022 – Present</div>
+        <div class="tl-period">2022 - Present</div>
         <div class="tl-marker"><div class="tl-dot"></div><div class="tl-line"></div></div>
         <div class="tl-content">
           <div class="tl-role">Professional Development & Entrepreneurial Venture</div>
@@ -418,7 +556,7 @@
         </div>
       </div>
       <div class="tl-item reveal reveal-delay-2">
-        <div class="tl-period">Jul 2015 – Nov 2021</div>
+        <div class="tl-period">Jul 2015 - Nov 2021</div>
         <div class="tl-marker"><div class="tl-dot"></div><div class="tl-line"></div></div>
         <div class="tl-content">
           <div class="tl-role">QA Analyst · Calibration Chairman · Purchasing/Procurement Support</div>
@@ -436,7 +574,7 @@
         </div>
       </div>
       <div class="tl-item reveal reveal-delay-3">
-        <div class="tl-period">Mar – May 2015</div>
+        <div class="tl-period">Mar - May 2015</div>
         <div class="tl-marker"><div class="tl-dot"></div><div class="tl-line"></div></div>
         <div class="tl-content">
           <div class="tl-role">Quality Control Inspector</div>
@@ -456,7 +594,7 @@
   <div class="sec-head reveal">
     <span class="sec-tag">Portfolio</span>
     <h2 class="sec-title">Apps & Tools I've built</h2>
-    <p class="sec-sub">Full-stack apps deployed on Vercel and AI-powered tools — all grounded in real operations problems.</p>
+    <p class="sec-sub">Full-stack apps deployed on Vercel and practical tools built around real operations problems.</p>
   </div>
 
   <div class="port-tabs reveal">
@@ -715,9 +853,10 @@
 
 
 
+    </section>
 
   <!-- ===== BLOG ===== -->
-  <section id="blog">
+    <section id="blog">
     <div class="blog-header reveal">
       <div>
         <span class="sec-tag">Blog</span>
@@ -742,7 +881,7 @@
       <a class="blog-card reveal reveal-delay-3" href="https://thesteadystate.beehiiv.com" target="_blank">
         <span class="blog-cat">Six Sigma</span>
         <div class="blog-title">DMAIC: Solving the Problems Every Other Method Leaves Behind</div>
-        <p class="blog-excerpt">A practitioner's guide to the DMAIC framework — with real examples from process improvement projects.</p>
+        <p class="blog-excerpt">A practitioner's guide to the DMAIC framework, with examples from process improvement projects.</p>
         <div class="blog-footer"><span class="blog-read">Read post <span>→</span></span></div>
       </a>
     </div>
@@ -763,7 +902,7 @@
         <div class="contact-row" style="margin-top:20px;border-top:1px solid var(--border);padding-top:20px;flex-direction:column;align-items:flex-start;gap:4px;">
           <div style="font-size:11px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.06em;">Education & License</div>
           <div style="font-size:14px;color:var(--text);font-weight:500;">BS Chemical Engineering</div>
-          <div style="font-size:12px;color:var(--text-dim);">Saint Louis University, Baguio City (2009–2014)</div>
+          <div style="font-size:12px;color:var(--text-dim);">Saint Louis University, Baguio City (2009-2014)</div>
           <div style="font-size:12px;color:var(--accent);font-weight:500;margin-top:4px;">Licensed Chemical Engineer (November 2014)</div>
         </div>
       </div>
@@ -777,8 +916,7 @@
     </form>
   </div>
 </section>
-  </section>
-</main>
+  </main>
 
 <footer>
   <div class="wrap footer-inner">
